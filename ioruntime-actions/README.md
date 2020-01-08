@@ -36,12 +36,12 @@ wsk activation get <activation-id>
 
 Updates the action to be accessible by a URL and specifies which nodejs version to use
 ```
-wsk action update ralphlauren/download-zip --web true --kind nodejs:10
+wsk action update amolanand/download-zip --web true --kind nodejs:10
 ```
 
 Get the URL to use when calling the action. This should only be called after updating the action to be accessible from the web which is the previous command
 ```
-wsk action get ralphlauren/download-zip --url
+wsk action get amolanand/download-zip --url
 ```
 
 ### Setting up the wskdeploy CLI
@@ -66,6 +66,7 @@ Note: Before running 'wskdeploy', please make sure your ~/.wskprops file has the
 
 
 ## Details of each action are listed below
+###TBD
 
 POST Url:
 ```
