@@ -1,0 +1,23 @@
+{
+  "name": "aemcontent",
+  "fields": [
+    { "name": "Path", "type": "Edm.String", "key": true, "filterable": true },
+    { "name": "URL", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
+    { "name": "Name", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false },
+    { "name": "Title", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false },
+    { "name": "Description", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false },
+    { "name": "LastModified", "type": "Edm.DateTimeOffset", "filterable": true, "sortable": true, "facetable": true },
+    { "name": "Tags", "type": "Collection(Edm.String)", "searchable": true, "filterable": true, "sortable": false, "facetable": true, "analyzer": "tagsAnalyzer" },
+    { "name": "Content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
+  ],
+  "suggesters": [
+  ],
+  "analyzers": [
+    {
+      "@odata.type": "#Microsoft.Azure.Search.CustomAnalyzer",
+      "name": "tagsAnalyzer",
+      "charFilters": [ "html_strip" ],
+      "tokenizer": "standard_v2"
+    }
+  ]
+}
