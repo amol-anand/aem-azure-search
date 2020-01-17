@@ -1,0 +1,50 @@
+{
+    "name": "aemsearch",
+    "fields": [
+        {
+            "name": "id",
+            "type": "Edm.String",
+            "key": true,
+            "filterable": true
+        },
+        {
+            "name": "url",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "sortable": true,
+            "facetable": false
+        },
+        {
+            "name": "file_name",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": true,
+            "sortable": true,
+            "facetable": false
+        },
+        {
+            "name": "content",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": true,
+            "sortable": true,
+            "facetable": true
+        },
+        {
+            "name": "size",
+            "type": "Edm.Int32",
+            "searchable": false,
+            "filterable": true,
+            "sortable": false,
+            "facetable": true
+        },
+        {
+            "name": "last_modified",
+            "type": "Edm.DateTimeOffset",
+            "filterable": true,
+            "sortable": true,
+            "facetable": true
+        }
+    ]
+}
