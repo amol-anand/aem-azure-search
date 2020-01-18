@@ -1,12 +1,12 @@
 # Adding Azure Cognitive Search to Adobe Experience Manager
-These are guidelines to help companies add an [Azure Cognitive Search](https://docs.microsoft.com/en-us/azure/search/) service to Adobe Experinece Manager and will work on these deployment architectures for AEM:
+These are guidelines to help companies add an [Azure Cognitive Search](https://docs.microsoft.com/en-us/azure/search/) service to Adobe Experience Manager and will work on these deployment architectures for AEM:
 
 1. On-premise hosting
 2. Managed IaaS service
 3. Managed PaaS service
 
 ## Requirements
-1. Running Adobe AEM instance with admin permissions
+1. Running Adobe AEM instance with admin permissions to install and configure plug-ins
 2. Microsoft Azure Subscription with the ability to provision services.
 
 ### Provisioning Azure Cognitive Search
@@ -18,16 +18,19 @@ These are guidelines to help companies add an [Azure Cognitive Search](https://d
 5. Copy the **Primary admin key** for later use.  
 
 ### Configuring Azure Search
-1. Using the Uri from step 3 and the key from step 4 above you can create an index with a REST call via PowerShell, Postman, or any other tool that can make REST calls:
+1. Using the Uri from step 3 and the key from step 4 above you can create an index with a REST call via [PowerShell](https://docs.microsoft.com/en-us/powershell/?view=powershell-7), [Postman](https://www.getpostman.com/), or any other tool that can make REST calls:
 
 #### PowerShell
-This uses the [CreateIndex.json](Scripts/CreateIndex.json) script that is in the same directory as the PowerScript:
+1. This uses the [CreateIndex.json](Scripts/CreateIndex.json) script that is in the same directory as the PowerShell script.  
+2. The $name below needs to match the index name in the CreateIndex.json file.
+```powershell
+    #Create Index Powershell Script 
 
-    $adminKey  = "put your key here"
+    $adminKey  = "put your key here from step 5 above"
     
-    $url = "put your search Url here"
+    $url = "put your search Url here from step 3 above"
     
-    $name = "aemsearch'  #
+    $name = "aemsearch'  
     
     $headers = @{
         'api-key' = $adminKey
@@ -35,9 +38,10 @@ This uses the [CreateIndex.json](Scripts/CreateIndex.json) script that is in the
         'Accept' = 'application/json' 
     }
 
-    $uri = $url + "indexes/" + $name + "?api-version=2019-05-06";
+    $uri = $url + "indexes/" + $name + "?api-version=2019-05-06"
 
     Invoke-RestMethod -Uri ($uri) -Headers $headers -Method Put -Body (Get-Content .\CreateIndex.json -Raw) | ConvertTo-Json
-If successful, this will have created an index.
+```
+If successful, this will have created an index.  The next step is to install the plug-in into AEM that will add, update, and remove entries into the index.
 
 ### Configuring Adobe Experience Manager
