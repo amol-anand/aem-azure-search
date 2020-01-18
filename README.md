@@ -21,8 +21,8 @@ These are guidelines to help companies add an [Azure Cognitive Search](https://d
 1. Using the Uri from step 3 and the key from step 4 above you can create an index with a REST call via [PowerShell](https://docs.microsoft.com/en-us/powershell/?view=powershell-7), [Postman](https://www.getpostman.com/), or any other tool that can make REST calls:
 
 #### PowerShell
-1. This uses the [CreateIndex.json](Scripts/CreateIndex.json) script that is in the same directory as the PowerShell script.  
-2. The $name below needs to match the index name in the CreateIndex.json file.
+1. This uses the [samples/index-sample.json](samples/index-sample.json) payload that in the same directory as the PowerShell script.  
+2. The *$name* below needs to match the index name in the index-sample.json file.
 ```powershell
     #Create Index Powershell Script 
 
@@ -30,7 +30,7 @@ These are guidelines to help companies add an [Azure Cognitive Search](https://d
     
     $url = "put your search Url here from step 3 above"
     
-    $name = "aemsearch'  
+    $name = "aemcontent'  
     
     $headers = @{
         'api-key' = $adminKey
@@ -40,7 +40,7 @@ These are guidelines to help companies add an [Azure Cognitive Search](https://d
 
     $uri = $url + "indexes/" + $name + "?api-version=2019-05-06"
 
-    Invoke-RestMethod -Uri ($uri) -Headers $headers -Method Put -Body (Get-Content .\CreateIndex.json -Raw) | ConvertTo-Json
+    Invoke-RestMethod -Uri ($uri) -Headers $headers -Method Put -Body (Get-Content .\index-sample.json -Raw) | ConvertTo-Json
 ```
 If successful, this will have created an index.  The next step is to install the plug-in into AEM that will add, update, and remove entries into the index.
 
