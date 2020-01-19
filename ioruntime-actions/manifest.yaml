@@ -1,0 +1,24 @@
+packages:
+    # this is the package name
+    azuresearch:
+        actions:
+            # name of the action
+            trigger-azure-action:
+                # source for the action; in this case it is a folder
+                function: trigger-azure-action
+                runtime: nodejs:10
+            # name of the action
+            create-index:
+                # source for the action; in this case it is a folder
+                function: create-index
+                runtime: nodejs:10
+            # name of the action
+            update-index:
+                # source for the action; in this case it is a folder
+                function: update-index
+                runtime: nodejs:10
+            # name of the action
+            update-document:
+                # source for the action; in this case it is a folder
+                function: update-document
+                runtime: nodejs:10

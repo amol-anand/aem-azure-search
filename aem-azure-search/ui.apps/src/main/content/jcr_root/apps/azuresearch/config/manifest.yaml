@@ -1,0 +1,9 @@
+packages:
+    # this is the package name
+    ralphlauren:
+        actions:
+            # name of the action
+            download-zip:
+                # source for the action; in this case it is a folder
+                function: actions
+                runtime: nodejs:10

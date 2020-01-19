@@ -1,0 +1,19 @@
+{
+  "name": "update-index",
+  "version": "1.0.0",
+  "description": "Updates Azure Index with new values supplied",
+  "main": "update-index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Amol Anand",
+  "license": "ISC",
+  "dependencies": {
+    "https": "^1.0.0",
+    "install": "^0.13.0",
+    "npm": "^6.10.2",
+    "openwhisk": "^3.20.0",
+    "request": "^2.88.0"
+  }
+}

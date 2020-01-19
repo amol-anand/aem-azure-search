@@ -1,0 +1,19 @@
+{
+  "name": "trigger-azure-action",
+  "version": "1.0.0",
+  "description": "Triggers Azure Actions like creating/updating indexes or adding/merging documents to the index",
+  "main": "trigger-azure-action.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Amol Anand",
+  "license": "ISC",
+  "dependencies": {
+    "https": "^1.0.0",
+    "install": "^0.13.0",
+    "npm": "^6.10.2",
+    "openwhisk": "^3.20.0",
+    "request": "^2.88.0"
+  }
+}
