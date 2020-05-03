@@ -1,0 +1,32 @@
+
+<div class="azure-search-result">
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html">
+
+	<div id="azure-search-bar" class="ui fluid big left icon input ${properties['hideButton'] ? '' : 'action'}">
+	<i class="cmp-search__icon" data-cmp-hook-search="icon"></i>
+
+
+		<input type="text"
+			   placeholder="${properties['placeholder']}"
+			   name="fulltext"/>
+		<i class="search icon"></i>
+		<button class="ui primary button ${properties['hideButton'] ? 'hidden' : ''}" 
+				form="${predicate.formId}">
+		        ${properties['buttonLabel']}
+		</button>
+	</div>
+
+</sly>
+	<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty= !ready}"></sly>
+
+	<div class="outer-loader hide"><div class="loader"></div></div>
+
+    <div id="azure-search-result" class="azure-search-result-container ui fluid big left icon">
+    
+        
+        <div class="azure-search-result-heading"></div>
+        <div class="azure-search-result-desc"></div>
+    
+    </div>
+
+</div>

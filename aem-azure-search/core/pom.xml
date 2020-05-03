@@ -32,7 +32,7 @@
                 <groupId>org.apache.sling</groupId>
                 <artifactId>sling-maven-plugin</artifactId>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>biz.aQute.bnd</groupId>
                 <artifactId>bnd-maven-plugin</artifactId>
                 <executions>
@@ -45,14 +45,77 @@
                             <bnd><![CDATA[
 Bundle-Category: AzureSearch.Content
 -exportcontents: ${packages;VERSIONED}
-Sling-Model-Packages: com.adobe.aem.poc.azuresearch.core.models
+Sling-Model-Packages: com.adobe.aem.poc.azuresearch.components.predicates
 -snapshot: ${tstamp;yyyyMMddHHmmssSSS}
 Bundle-DocURL:
                                 ]]></bnd>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>-->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-scr-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-scr-descriptor</id>
+                        <goals>
+                            <goal>scr</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+            <plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>generate-osgi-metadata-for-unittests</id>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                    </execution>
+                    <execution>
+                        <id>scr-metadata</id>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                        <configuration>
+                            <supportIncrementalBuild>true</supportIncrementalBuild>
+                        </configuration>
+                    </execution>
+                </executions>
+				<configuration>
+					<instructions>
+						<!-- Import any version of javax.inject and javax.annotation, to allow 
+							running on multiple versions of AEM -->
+						<Import-Package>
+                            javax.inject;version=0.0.0,
+                            javax.annotation;version=0.0.0,
+                            !com.jcraft.*,
+                            *
+                        </Import-Package>
+						<Sling-Model-Packages>
+							com.adobe.aem.poc.azuresearch.components.predicates
+						</Sling-Model-Packages>
+						<Embed-Dependency>json-simple,jsch;scope=compile|runtime</Embed-Dependency>
+					</instructions>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.felix</groupId>
+						<artifactId>org.apache.felix.scr.bnd</artifactId>
+						<version>1.9.0</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.sling</groupId>
+						<artifactId>org.apache.sling.bnd.models</artifactId>
+						<version>1.0.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
             <plugin>
                 <groupId>biz.aQute.bnd</groupId>
                 <artifactId>bnd-baseline-maven-plugin</artifactId>
@@ -174,6 +237,10 @@ Bundle-DocURL:
         <dependency>
             <groupId>uk.org.lidalia</groupId>
             <artifactId>slf4j-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.cq</groupId>
+            <artifactId>core.wcm.components.core</artifactId>
         </dependency>
     </dependencies>
 </project>

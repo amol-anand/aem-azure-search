@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    cq:icon="select"
+    jcr:description="Allows a user to filter search results by a jcr metadata property."
+    jcr:primaryType="cq:Component"
+    jcr:title="Property Filter"
+    componentGroup="Azure Search"
+    generatePredicateGroupId="{Boolean}true"/>

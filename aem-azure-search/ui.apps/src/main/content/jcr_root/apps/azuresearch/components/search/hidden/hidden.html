@@ -1,0 +1,10 @@
+<sly data-sly-use.predicate="com.adobe.aem.poc.azuresearch.components.predicates.HiddenPredicate"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html">
+     <sly data-sly-list.key="${predicate.params}">
+		<div class="azure-search field" data-azure-search-type="hidden" data-azure-search-field-name="${key}" data-azure-search-field-value="${predicate.params[key]}"></div>
+     </sly>
+</sly>
+
+<!--/* The Hidden Predicate is always hidden; Add the placeholder to allow Authors to select for editing*/-->
+
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!ready}"></sly>
